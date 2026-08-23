@@ -6,16 +6,12 @@ import { RenderPass } from 'https://cdn.jsdelivr.net/npm/three@0.125.2/examples/
 import { UnrealBloomPass } from 'https://cdn.jsdelivr.net/npm/three@0.125.2/examples/jsm/postprocessing/UnrealBloomPass.js';
 
 // ==================================================
-// SCENE
-// ==================================================
 
+// SCENE
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x0f1115); // Neutral dark backdrop
 
-// ==================================================
 // CAMERA
-// ==================================================
-
 const camera = new THREE.PerspectiveCamera(
     45,
     window.innerWidth / window.innerHeight,
@@ -23,10 +19,8 @@ const camera = new THREE.PerspectiveCamera(
     1000
 );
 
-// ==================================================
-// RENDERER
-// ==================================================
 
+// RENDERER
 const renderer = new THREE.WebGLRenderer({
     antialias: true,
     powerPreference: "high-performance"
@@ -42,23 +36,17 @@ renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.3;
 
-// ==================================================
-// SHADOWS
-// ==================================================
 
+// SHADOWS
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-// ==================================================
-// ADD RENDERER TO PAGE
-// ==================================================
 
+// ADD RENDERER TO PAGE
 document.getElementById("bgmodel").appendChild(renderer.domElement);
 
-// ==================================================
-// POST-PROCESSING (BLOOM)
-// ==================================================
 
+// POST-PROCESSING (BLOOM)
 const composer = new EffectComposer(renderer);
 
 // 1. Base Render Pass
@@ -74,9 +62,8 @@ const bloomThreshold = 0.5; // Minimum brightness required to trigger bloom
 const bloomPass = new UnrealBloomPass(bloomResolution, bloomStrength, bloomRadius, bloomThreshold);
 composer.addPass(bloomPass);
 
-// ==================================================
+
 // NATURAL LIGHTING (NO TINT)
-// ==================================================
 
 // Soft neutral ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
@@ -106,9 +93,7 @@ const fillLight = new THREE.DirectionalLight(0xf0f5ff, 0.6);
 fillLight.position.set(-5, 4, -5);
 scene.add(fillLight);
 
-// ==================================================
 // MODEL LOADER
-// ==================================================
 
 const loader = new GLTFLoader();
 
@@ -172,9 +157,7 @@ loader.load(
     }
 );
 
-// ==================================================
 // CAMERA FRAMES
-// ==================================================
 
 const frames = [
     {
@@ -199,9 +182,7 @@ const frames = [
     }
 ];
 
-// ==================================================
 // CAMERA ANIMATION STATE
-// ==================================================
 
 let currentFrame = 0;
 let isAnimating = false;
@@ -267,9 +248,7 @@ function animateCamera() {
     }
 }
 
-// ==================================================
 // MENU & INFORMATION
-// ==================================================
 
 const menuButtons = document.querySelectorAll(".menu-button");
 menuButtons.forEach(function (button) {
@@ -299,9 +278,7 @@ function updateInformation(index) {
     if (descriptionElement) descriptionElement.textContent = data.description;
 }
 
-// ==================================================
 // RESIZE HANDLER
-// ==================================================
 
 window.addEventListener("resize", function () {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -317,9 +294,7 @@ const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444444, 0.8);
 hemiLight.position.set(0, 20, 0);
 scene.add(hemiLight);
 
-// ==================================================
 // RENDER LOOP
-// ==================================================
 
 function animate() {
     requestAnimationFrame(animate);
@@ -329,9 +304,7 @@ function animate() {
     composer.render();
 }
 
-// ==================================================
 // START
-// ==================================================
 
 animate();
 updateInformation(0);
