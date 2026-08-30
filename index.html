@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>3D Portfolio</title>
+    <title>Your Name — 3D Portfolio</title>
 
     <link rel="stylesheet" href="./style.css">
 
@@ -17,78 +17,713 @@
 <body>
 
 
-    <!-- =========================================
+    <!-- ==================================================
          3D MODEL
-    ========================================== -->
+    ================================================== -->
 
     <div id="bgmodel"></div>
 
 
-    <!-- =========================================
-         PORTFOLIO MENU
-    ========================================== -->
+    <!-- ==================================================
+         MENU EDGE / HOVER AREA
+    ================================================== -->
 
-    <div id="menu">
+    <div id="menu-trigger">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!-- ==================================================
+         SIDE MENU
+    ================================================== -->
+
+    <nav id="menu">
+
+        <div class="menu-top">
+
+            <div class="menu-logo">
+                PORTFOLIO
+            </div>
+
+            <div class="menu-line"></div>
+
+        </div>
+
 
         <button class="menu-button active" data-frame="0">
-            <span class="number">01</span>
-            <span class="label">ABOUT</span>
+
+            <span class="number">
+                01
+            </span>
+
+            <span class="label">
+                ABOUT
+            </span>
+
         </button>
 
 
         <button class="menu-button" data-frame="1">
-            <span class="number">02</span>
-            <span class="label">PROJECTS</span>
+
+            <span class="number">
+                02
+            </span>
+
+            <span class="label">
+                PROJECTS
+            </span>
+
         </button>
 
 
         <button class="menu-button" data-frame="2">
-            <span class="number">03</span>
-            <span class="label">SKILLS</span>
+
+            <span class="number">
+                03
+            </span>
+
+            <span class="label">
+                SKILLS
+            </span>
+
         </button>
 
 
         <button class="menu-button" data-frame="3">
-            <span class="number">04</span>
-            <span class="label">CONTACT</span>
+
+            <span class="number">
+                04
+            </span>
+
+            <span class="label">
+                CONTACT
+            </span>
+
         </button>
 
-    </div>
 
+        <div class="menu-bottom">
 
-    <!-- =========================================
-         CURRENT SECTION INFORMATION
-    ========================================== -->
+            <span>
+                © 2026
+            </span>
 
-    <div id="info">
+            <span>
+                YOUR NAME
+            </span>
 
-        <div id="info-number">
-            01
         </div>
 
-        <h1 id="info-title">
-            ABOUT
-        </h1>
-
-        <p id="info-description">
-            Welcome to my portfolio.
-        </p>
-
-    </div>
+    </nav>
 
 
-    <!-- =========================================
+    <!-- ==================================================
+         PAGE CONTENT
+    ================================================== -->
+
+    <main id="content" >
+
+
+        <!-- ==================================================
+             ABOUT
+        ================================================== -->
+
+        <section class="page page-about" data-page="0">
+
+            <div class="page-inner">
+
+
+                <div class="page-header">
+
+                    <span class="page-number">
+                        01 / 04
+                    </span>
+
+                    <h1>
+                        ABOUT
+                    </h1>
+
+                </div>
+
+
+                <div class="about-layout">
+
+
+                    <div class="about-text">
+
+                        <p class="eyebrow">
+                            HELLO, I'M YOUR NAME
+                        </p>
+
+
+                        <h2>
+                            I create digital
+                            experiences
+                            through design,
+                            code & 3D.
+                        </h2>
+
+
+                        <p class="body-text">
+                            Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit.
+                            Integer posuere erat a ante.
+                            Praesent commodo cursus magna,
+                            vel scelerisque nisl consectetur.
+                        </p>
+
+
+                        <p class="body-text">
+                            Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit.
+                            Curabitur blandit tempus porttitor.
+                            Donec ullamcorper nulla non metus
+                            auctor fringilla.
+                        </p>
+
+
+                        <div class="about-points">
+
+                            <div>
+                                <span>01</span>
+                                <p>
+                                    Creative development
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>02</span>
+                                <p>
+                                    3D visualization
+                                </p>
+                            </div>
+
+                            <div>
+                                <span>03</span>
+                                <p>
+                                    Interactive experiences
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-image">
+
+                        <div class="image-frame">
+
+                            <img src="./images/about.jpg" alt="About me">
+
+                            <span class="image-caption">
+                                CREATIVE / DEVELOPER
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             PROJECTS
+        ================================================== -->
+
+        <section class="page page-projects" data-page="1">
+
+            <div class="page-inner">
+
+
+                <div class="page-header">
+
+                    <span class="page-number">
+                        02 / 04
+                    </span>
+
+                    <h1>
+                        PROJECTS
+                    </h1>
+
+                </div>
+
+
+                <div class="projects-grid">
+
+
+                    <article class="project project-large">
+
+                        <div class="project-image">
+
+                            <img src="./images/project1.jpg" alt="Project 01">
+
+                            <span class="project-number">
+                                01
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            INTERIOR VISUALIZATION
+                        </h3>
+
+                        <p>
+                            3D / ARCHITECTURE / VISUALIZATION
+                        </p>
+
+                    </article>
+
+
+                    <article class="project">
+
+                        <div class="project-image">
+
+                            <img src="./images/project2.jpg" alt="Project 02">
+
+                            <span class="project-number">
+                                02
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            DIGITAL EXPERIENCE
+                        </h3>
+
+                        <p>
+                            WEB / INTERACTION
+                        </p>
+
+                    </article>
+
+
+                    <article class="project">
+
+                        <div class="project-image">
+
+                            <img src="./images/project3.jpg" alt="Project 03">
+
+                            <span class="project-number">
+                                03
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            3D ENVIRONMENT
+                        </h3>
+
+                        <p>
+                            BLENDER / THREE.JS
+                        </p>
+
+                    </article>
+
+
+                    <article class="project">
+
+                        <div class="project-image">
+
+                            <img src="./images/project4.jpg" alt="Project 04">
+
+                            <span class="project-number">
+                                04
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            CREATIVE CODE
+                        </h3>
+
+                        <p>
+                            DEVELOPMENT / EXPERIMENTAL
+                        </p>
+
+                    </article>
+
+
+                    <article class="project project-wide">
+
+                        <div class="project-image">
+
+                            <img src="./images/project5.jpg" alt="Project 05">
+
+                            <span class="project-number">
+                                05
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            VISUAL STUDY
+                        </h3>
+
+                        <p>
+                            ART DIRECTION / DESIGN
+                        </p>
+
+                    </article>
+
+
+                    <article class="project">
+
+                        <div class="project-image">
+
+                            <img src="./images/project6.jpg" alt="Project 06">
+
+                            <span class="project-number">
+                                06
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            EXPERIMENTAL SPACE
+                        </h3>
+
+                        <p>
+                            3D / CONCEPT
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             SKILLS
+        ================================================== -->
+
+        <section class="page page-skills" data-page="2">
+
+            <div class="page-inner">
+
+
+                <div class="page-header">
+
+                    <span class="page-number">
+                        03 / 04
+                    </span>
+
+                    <h1>
+                        SKILLS
+                    </h1>
+
+                </div>
+
+
+                <div class="skills-layout">
+
+
+                    <div class="skills-intro">
+
+                        <span class="eyebrow">
+                            WHAT I DO
+                        </span>
+
+                        <h2>
+                            Turning ideas
+                            into interactive
+                            experiences.
+                        </h2>
+
+                        <p class="body-text">
+                            I combine visual design,
+                            3D environments and
+                            creative development to
+                            build digital experiences
+                            that feel alive.
+                        </p>
+
+                    </div>
+
+
+                    <div class="skills-list">
+
+
+                        <div class="skill">
+
+                            <div class="skill-top">
+
+                                <span>
+                                    01
+                                </span>
+
+                                <h3>
+                                    3D & VISUALIZATION
+                                </h3>
+
+                            </div>
+
+                            <p>
+                                Blender · Maya · Unreal Engine
+                                · Substance Painter
+                            </p>
+
+                        </div>
+
+
+                        <div class="skill">
+
+                            <div class="skill-top">
+
+                                <span>
+                                    02
+                                </span>
+
+                                <h3>
+                                    FRONTEND
+                                </h3>
+
+                            </div>
+
+                            <p>
+                                HTML · CSS · JavaScript ·
+                                Three.js · WebGL
+                            </p>
+
+                        </div>
+
+
+                        <div class="skill">
+
+                            <div class="skill-top">
+
+                                <span>
+                                    03
+                                </span>
+
+                                <h3>
+                                    CREATIVE DEVELOPMENT
+                                </h3>
+
+                            </div>
+
+                            <p>
+                                Interactive interfaces ·
+                                Animation · Motion ·
+                                Experimental Web
+                            </p>
+
+                        </div>
+
+
+                        <div class="skill">
+
+                            <div class="skill-top">
+
+                                <span>
+                                    04
+                                </span>
+
+                                <h3>
+                                    DESIGN
+                                </h3>
+
+                            </div>
+
+                            <p>
+                                UI/UX · Art direction ·
+                                Typography · Visual systems
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-tags">
+
+                    <span>THREE.JS</span>
+                    <span>WEBGL</span>
+                    <span>BLENDER</span>
+                    <span>MAYA</span>
+                    <span>UNREAL</span>
+                    <span>JAVASCRIPT</span>
+                    <span>PHOTOSHOP</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==================================================
+             CONTACT
+        ================================================== -->
+
+        <section class="page page-contact" data-page="3">
+
+            <div class="page-inner">
+
+
+                <div class="page-header">
+
+                    <span class="page-number">
+                        04 / 04
+                    </span>
+
+                    <h1>
+                        CONTACT
+                    </h1>
+
+                </div>
+
+
+                <div class="contact-layout">
+
+
+                    <div class="contact-main">
+
+                        <span class="eyebrow">
+                            HAVE A PROJECT IN MIND?
+                        </span>
+
+
+                        <h2>
+                            Let's make
+                            something
+                            interesting.
+                        </h2>
+
+
+                        <a class="email" href="mailto:hello@example.com">
+                            hello@example.com
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                EMAIL
+                            </span>
+
+                            <a href="mailto:hello@example.com">
+                                hello@example.com
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                SOCIAL
+                            </span>
+
+                            <a href="#">
+                                Instagram
+                            </a>
+
+                            <a href="#">
+                                LinkedIn
+                            </a>
+
+                            <a href="#">
+                                GitHub
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>
+                                LOCATION
+                            </span>
+
+                            <p>
+                                INDIA
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="contact-footer">
+
+                    <span>
+                        AVAILABLE FOR SELECTED PROJECTS
+                    </span>
+
+                    <span>
+                        © 2026 YOUR NAME
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==================================================
          LOADING
-    ========================================== -->
+    ================================================== -->
 
     <div id="loading">
-        LOADING 3D ENVIRONMENT
+
+        <div class="loading-content">
+
+            <span>
+                LOADING
+            </span>
+
+            <div class="loading-line">
+
+                <div id="loading-progress"></div>
+
+            </div>
+
+            <small>
+                3D ENVIRONMENT
+            </small>
+
+        </div>
+
     </div>
 
 
-    <!-- =========================================
+    <!-- ==================================================
          THREE.JS
-    ========================================== -->
+    ================================================== -->
 
     <script type="module" src="./app.js"></script>
 

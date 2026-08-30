@@ -3,15 +3,14 @@
 ================================================== */
 
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
 }
 
-
-/* ==================================================
-   PAGE
-================================================== */
 
 html,
 body {
@@ -21,7 +20,9 @@ body {
 
     overflow: hidden;
 
-    background: #111111;
+    background: #0f1115;
+
+    color: #ffffff;
 
     font-family:
         Arial,
@@ -32,7 +33,7 @@ body {
 
 
 /* ==================================================
-   THREE.JS CONTAINER
+   THREE.JS
 ================================================== */
 
 #bgmodel {
@@ -49,11 +50,7 @@ body {
 }
 
 
-/* ==================================================
-   CANVAS
-================================================== */
-
-canvas {
+#bgmodel canvas {
 
     display: block;
 
@@ -64,27 +61,208 @@ canvas {
 
 
 /* ==================================================
-   MENU
+   MENU TRIGGER
+================================================== */
+
+#menu-trigger {
+
+    position: fixed;
+
+    left: 0;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 12px;
+    height: 100px;
+
+    z-index: 200;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+
+    opacity: 0.55;
+
+    transition:
+        opacity 0.3s ease;
+
+}
+
+
+#menu-trigger span {
+
+    display: block;
+
+    width: 3px;
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+}
+
+
+#menu-trigger:hover {
+
+    opacity: 1;
+
+}
+
+
+/* ==================================================
+   SIDE MENU
 ================================================== */
 
 #menu {
 
     position: fixed;
 
-    left: 50px;
+    left: 0;
+    top: 0;
 
-    top: 50%;
+    width: 270px;
+    height: 100vh;
 
-    transform:
-        translateY(-50%);
-
-    z-index: 10;
+    z-index: 150;
 
     display: flex;
 
     flex-direction: column;
 
-    gap: 12px;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding:
+        40px 35px;
+
+    background:
+        rgba(
+            8,
+            9,
+            12,
+            0.78
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border-right:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.1
+        );
+
+    transform:
+        translateX(
+            calc(-100% + 10px)
+        );
+
+    transition:
+        transform 0.5s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
+}
+
+
+/* ==================================================
+   SHOW MENU WHEN HOVERING LEFT EDGE
+================================================== */
+
+#menu:hover,
+#menu-trigger:hover + #menu {
+
+    transform:
+        translateX(0);
+
+}
+
+
+/* Invisible hover zone
+   makes the menu easier to trigger */
+
+#menu::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: -25px;
+
+    width: 25px;
+    height: 100%;
+
+}
+
+
+/* ==================================================
+   MENU TOP
+================================================== */
+
+.menu-top {
+
+    position: absolute;
+
+    top: 35px;
+    left: 35px;
+    right: 35px;
+
+}
+
+
+.menu-logo {
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.8
+        );
+
+}
+
+
+.menu-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 18px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
 
 }
 
@@ -95,31 +273,34 @@ canvas {
 
 .menu-button {
 
-    position: relative;
+    width: 100%;
 
-    width: 190px;
+    height: 54px;
 
-    height: 58px;
+    padding:
+        0 15px;
 
-    padding: 0 18px;
+    border: 0;
 
-    border: none;
+    border-left:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
 
     background:
-        rgba(10, 10, 10, 0.55);
+        transparent;
 
-    color: rgba(
-        255,
-        255,
-        255,
-        0.55
-    );
-
-    backdrop-filter:
-        blur(10px);
-
-    -webkit-backdrop-filter:
-        blur(10px);
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
 
     cursor: pointer;
 
@@ -132,17 +313,665 @@ canvas {
     text-align: left;
 
     transition:
+        all 0.3s ease;
 
-        background 0.35s ease,
+}
 
-        color 0.35s ease,
 
-        transform 0.35s ease,
+.menu-button:hover {
 
-        border-color 0.35s ease;
+    color: white;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+
+    padding-left: 22px;
+
+}
+
+
+.menu-button.active {
+
+    color: white;
 
     border-left:
-        2px solid
+        2px solid white;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    padding-left: 22px;
+
+}
+
+
+/* ==================================================
+   MENU NUMBER
+================================================== */
+
+.number {
+
+    min-width: 25px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.5;
+
+}
+
+
+/* ==================================================
+   MENU LABEL
+================================================== */
+
+.label {
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* ==================================================
+   MENU BOTTOM
+================================================== */
+
+.menu-bottom {
+
+    position: absolute;
+
+    left: 35px;
+    right: 35px;
+
+    bottom: 35px;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+}
+
+
+/* ==================================================
+   CONTENT
+================================================== */
+
+#content {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+}
+
+
+/* ==================================================
+   PAGES
+================================================== */
+
+.page {
+
+    position: absolute;
+
+    inset: 0;
+
+    padding:
+        70px 8vw;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+
+}
+
+
+.page.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+/* ==================================================
+   PAGE INNER
+================================================== */
+
+.page-inner {
+
+    width: min(
+        1100px,
+        100%
+    );
+
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    scrollbar-width: none;
+
+}
+
+
+.page-inner::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+
+/* ==================================================
+   PAGE HEADER
+================================================== */
+
+.page-header {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 25px;
+
+    margin-bottom: 45px;
+
+}
+
+
+.page-number {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.45
+        );
+
+    padding-bottom: 7px;
+
+}
+
+
+.page-header h1 {
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            76px
+        );
+
+    font-weight: 300;
+
+    letter-spacing:
+        clamp(
+            5px,
+            1vw,
+            14px
+        );
+
+    line-height: 1;
+
+}
+
+
+/* ==================================================
+   GENERAL TEXT
+================================================== */
+
+.eyebrow {
+
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.5
+        );
+
+}
+
+
+.body-text {
+
+    max-width: 500px;
+
+    margin-bottom: 18px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.65
+        );
+
+}
+
+
+/* ==================================================
+   ABOUT
+================================================== */
+
+.about-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 0.8fr;
+
+    gap: 70px;
+
+    align-items: center;
+
+}
+
+
+.about-text h2 {
+
+    max-width: 650px;
+
+    margin-bottom: 30px;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            52px
+        );
+
+    line-height: 1.05;
+
+    font-weight: 300;
+
+}
+
+
+.about-points {
+
+    margin-top: 30px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+}
+
+
+.about-points div {
+
+    display: flex;
+
+    gap: 20px;
+
+    padding: 13px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+}
+
+
+.about-points span {
+
+    font-size: 9px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+}
+
+
+.about-points p {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* ==================================================
+   ABOUT IMAGE
+================================================== */
+
+.image-frame {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio:
+        4 / 5;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+}
+
+
+.image-frame img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        grayscale(20%);
+
+    transition:
+        transform 0.8s ease;
+
+}
+
+
+.image-frame:hover img {
+
+    transform:
+        scale(1.04);
+
+}
+
+
+.image-caption {
+
+    position: absolute;
+
+    bottom: 15px;
+    left: 15px;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    padding: 8px 10px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
+
+}
+
+
+/* ==================================================
+   PROJECTS
+================================================== */
+
+.projects-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
+
+    gap: 30px;
+
+}
+
+
+.project {
+
+    pointer-events: auto;
+
+}
+
+
+.project-large {
+
+    grid-column:
+        span 2;
+
+}
+
+
+.project-wide {
+
+    grid-column:
+        span 2;
+
+}
+
+
+.project-image {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio:
+        16 / 10;
+
+    overflow: hidden;
+
+    background: #111;
+
+}
+
+
+.project-large .project-image {
+
+    aspect-ratio:
+        16 / 9;
+
+}
+
+
+.project-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.7s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
+}
+
+
+.project:hover
+.project-image img {
+
+    transform:
+        scale(1.06);
+
+}
+
+
+.project-number {
+
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    padding:
+        7px 9px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.5
+        );
+
+}
+
+
+.project h3 {
+
+    margin-top: 14px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    font-weight: 400;
+
+}
+
+
+.project p {
+
+    margin-top: 6px;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+}
+
+
+/* ==================================================
+   SKILLS
+================================================== */
+
+.skills-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+
+    gap: 80px;
+
+}
+
+
+.skills-intro h2 {
+
+    max-width: 450px;
+
+    margin-bottom: 25px;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            50px
+        );
+
+    font-weight: 300;
+
+    line-height: 1.05;
+
+}
+
+
+.skills-list {
+
+    border-top:
+        1px solid
         rgba(
             255,
             255,
@@ -153,151 +982,67 @@ canvas {
 }
 
 
-/* ==================================================
-   BUTTON HOVER
-================================================== */
+.skill {
 
-.menu-button:hover {
+    padding:
+        22px 0;
 
-    background:
+    border-bottom:
+        1px solid
         rgba(
             255,
             255,
             255,
-            0.12
+            0.15
         );
-
-    color: white;
-
-    transform:
-        translateX(8px);
 
 }
 
 
-/* ==================================================
-   ACTIVE BUTTON
-================================================== */
+.skill-top {
 
-.menu-button.active {
+    display: flex;
 
-    background:
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.skill-top span {
+
+    font-size: 9px;
+
+    color:
         rgba(
             255,
             255,
             255,
-            0.14
+            0.4
         );
 
-    color: white;
-
-    border-left:
-        2px solid white;
-
-    transform:
-        translateX(8px);
-
 }
 
 
-/* ==================================================
-   NUMBER
-================================================== */
-
-.number {
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    opacity: 0.5;
-
-    min-width: 22px;
-
-}
-
-
-/* ==================================================
-   LABEL
-================================================== */
-
-.label {
+.skill h3 {
 
     font-size: 13px;
 
     letter-spacing: 3px;
 
-    font-weight: 500;
+    font-weight: 400;
 
 }
 
 
-/* ==================================================
-   INFORMATION PANEL
-================================================== */
+.skill p {
 
-#info {
+    margin-top: 10px;
 
-    position: fixed;
+    margin-left: 37px;
 
-    right: 70px;
-
-    bottom: 70px;
-
-    z-index: 10;
-
-    width: 300px;
-
-    color: white;
-
-    text-align: right;
-
-    pointer-events: none;
-
-}
-
-
-/* ==================================================
-   INFO NUMBER
-================================================== */
-
-#info-number {
-
-    font-size: 12px;
-
-    letter-spacing: 4px;
-
-    opacity: 0.5;
-
-    margin-bottom: 8px;
-
-}
-
-
-/* ==================================================
-   INFO TITLE
-================================================== */
-
-#info-title {
-
-    font-size: 42px;
-
-    font-weight: 300;
-
-    letter-spacing: 8px;
-
-    margin-bottom: 14px;
-
-}
-
-
-/* ==================================================
-   INFO DESCRIPTION
-================================================== */
-
-#info-description {
-
-    font-size: 13px;
+    font-size: 11px;
 
     line-height: 1.7;
 
@@ -306,7 +1051,201 @@ canvas {
             255,
             255,
             255,
-            0.65
+            0.45
+        );
+
+}
+
+
+.skill-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 40px;
+
+}
+
+
+.skill-tags span {
+
+    padding:
+        10px 14px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* ==================================================
+   CONTACT
+================================================== */
+
+.contact-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 0.45fr;
+
+    gap: 80px;
+
+}
+
+
+.contact-main h2 {
+
+    max-width: 700px;
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            86px
+        );
+
+    line-height: 0.98;
+
+    font-weight: 300;
+
+}
+
+
+.email {
+
+    display: inline-block;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size:
+        clamp(
+            18px,
+            2vw,
+            26px
+        );
+
+    letter-spacing: 1px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+    padding-bottom: 7px;
+
+}
+
+
+.contact-details {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+}
+
+
+.contact-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+}
+
+
+.contact-item > span {
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.4
+        );
+
+}
+
+
+.contact-item a,
+.contact-item p {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+}
+
+
+.contact-item a:hover {
+
+    opacity: 0.55;
+
+}
+
+
+.contact-footer {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    margin-top: 80px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
         );
 
 }
@@ -322,7 +1261,7 @@ canvas {
 
     inset: 0;
 
-    z-index: 100;
+    z-index: 500;
 
     display: flex;
 
@@ -330,23 +1269,14 @@ canvas {
 
     justify-content: center;
 
-    background: #111111;
-
-    color: white;
-
-    font-size: 12px;
-
-    letter-spacing: 4px;
+    background:
+        #0f1115;
 
     transition:
         opacity 0.8s ease;
 
 }
 
-
-/* ==================================================
-   HIDE LOADING
-================================================== */
 
 #loading.hidden {
 
@@ -357,44 +1287,330 @@ canvas {
 }
 
 
+.loading-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.loading-content span {
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+}
+
+
+.loading-content small {
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+}
+
+
+.loading-line {
+
+    width: 180px;
+
+    height: 1px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+}
+
+
+#loading-progress {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    transition:
+        width 0.2s ease;
+
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 900px) {
+
+
+    .about-layout {
+
+        grid-template-columns:
+            1fr 0.7fr;
+
+        gap: 35px;
+
+    }
+
+
+    .skills-layout {
+
+        gap: 40px;
+
+    }
+
+
+    .contact-layout {
+
+        gap: 40px;
+
+    }
+
+
+    .projects-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+
+    }
+
+
+    .project-large,
+    .project-wide {
+
+        grid-column:
+            span 2;
+
+    }
+
+}
+
+
 /* ==================================================
    MOBILE
 ================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 650px) {
+
+
+    body {
+
+        overflow: hidden;
+
+    }
+
 
     #menu {
 
-        left: 20px;
+        width: 235px;
+
+        padding:
+            30px 25px;
 
     }
 
 
-    .menu-button {
+    #menu-trigger {
 
-        width: 155px;
-
-        height: 50px;
+        width: 18px;
 
     }
 
 
-    #info {
+    .menu-top {
 
+        left: 25px;
         right: 25px;
 
-        bottom: 30px;
-
-        width: 220px;
+        top: 28px;
 
     }
 
 
-    #info-title {
+    .menu-bottom {
 
-        font-size: 28px;
+        left: 25px;
+        right: 25px;
+
+        bottom: 25px;
+
+    }
+
+
+    .page {
+
+        padding:
+            40px 25px;
+
+        align-items:
+            flex-start;
+
+        padding-top: 90px;
+
+    }
+
+
+    .page-inner {
+
+        max-height:
+            calc(
+                100vh - 110px
+            );
+
+    }
+
+
+    .page-header {
+
+        margin-bottom: 30px;
+
+        gap: 12px;
+
+    }
+
+
+    .page-header h1 {
+
+        font-size: 35px;
 
         letter-spacing: 5px;
+
+    }
+
+
+    .page-number {
+
+        font-size: 8px;
+
+    }
+
+
+    /* ABOUT */
+
+    .about-layout {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 30px;
+
+    }
+
+
+    .about-text h2 {
+
+        font-size: 31px;
+
+    }
+
+
+    .about-image {
+
+        width: 65%;
+
+        margin-left: auto;
+
+    }
+
+
+    /* PROJECTS */
+
+    .projects-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 25px;
+
+    }
+
+
+    .project-large,
+    .project-wide {
+
+        grid-column:
+            span 1;
+
+    }
+
+
+    /* SKILLS */
+
+    .skills-layout {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 35px;
+
+    }
+
+
+    .skills-intro h2 {
+
+        font-size: 32px;
+
+    }
+
+
+    .skill-tags {
+
+        margin-top: 30px;
+
+    }
+
+
+    /* CONTACT */
+
+    .contact-layout {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 40px;
+
+    }
+
+
+    .contact-main h2 {
+
+        font-size: 47px;
+
+    }
+
+
+    .contact-footer {
+
+        margin-top: 40px;
+
+        flex-direction:
+            column;
+
+        gap: 10px;
 
     }
 

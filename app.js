@@ -259,7 +259,7 @@ menuButtons.forEach(function (button) {
 });
 
 const information = [
-    { number: "01", title: "ABOUT", description: "Welcome to my portfolio." },
+    { number: "01", title: "ABOUT", description: "Welcome to my portfolio!!" },
     { number: "02", title: "PROJECTS", description: "A collection of my work and projects." },
     { number: "03", title: "SKILLS", description: "Technologies, tools and skills I work with." },
     { number: "04", title: "CONTACT", description: "Let's build something together." }
